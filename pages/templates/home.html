@@ -2,10 +2,22 @@
 {% load static %}
 {% block title %}Home{% endblock title %}
 {% block content %}
-<h1>Homepage</h1>
-    <img class="bookcover" src="{% static 'images/rich.jpg' %}">
+<h1>Welcome to the bookstore app</h1>
+<div>
+    <form class="form-inline mt-2 mt-md-0" action="{% url 'search_results' %}"
+method="get">
+<input name="Q" class="form-control mr-sm-2" type="text" placeholder="Search"
+aria-label="Search">
+</form>
+</div>
+<br>
+<div>
+    <img class="bookcover" src="{% static 'images/book.jpg' %}">
+</div>
     {% if user.is_authenticated %}
-      Hi {{ user.email }}!
+<br>
+      Hi {{ user.username }}!
+     <p>click on the books link to get the list of all available books in our bookstore</p>
         <p><a href="{% url 'account_logout' %}">Log Out</a></p>
     {% else %}
      <p>You are not logged in</p>
